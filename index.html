@@ -7,27 +7,81 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="bgCanvas"></canvas>
   <div class="container">
-    <h1>贪吃蛇</h1>
-    <div class="score-board">
-      <span>得分: <strong id="score">0</strong></span>
-      <span>最高分: <strong id="highScore">0</strong></span>
-    </div>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <div id="overlay" class="overlay">
-      <div class="overlay-text">
-        <p id="overlayMsg">按 空格键 或点击开始</p>
+    <div class="header">
+      <div class="logo">
+        <span class="logo-icon">&#9784;</span>
+        <h1>SNAKE</h1>
+      </div>
+      <div class="score-board">
+        <div class="score-item">
+          <label>SCORE</label>
+          <span id="score">0</span>
+        </div>
+        <div class="divider"></div>
+        <div class="score-item">
+          <label>BEST</label>
+          <span id="highScore">0</span>
+        </div>
+        <div class="divider"></div>
+        <div class="score-item">
+          <label>LENGTH</label>
+          <span id="length">1</span>
+        </div>
       </div>
     </div>
-    <div class="controls">
-      <p>方向键 / WASD 控制方向 &nbsp;|&nbsp; 空格键 暂停</p>
+
+    <div class="game-wrapper">
+      <canvas id="gameCanvas" width="480" height="480"></canvas>
+      <div id="overlay" class="overlay">
+        <div class="overlay-content">
+          <div id="startScreen" class="screen">
+            <div class="snake-art">&#128013;</div>
+            <h2>GREEDY SNAKE</h2>
+            <p class="subtitle">经典贪吃蛇</p>
+            <button id="startBtn" class="btn btn-primary pulse">开始游戏</button>
+            <p class="hint">空格键 / 点击按钮开始</p>
+          </div>
+          <div id="pauseScreen" class="screen hidden">
+            <div class="pause-icon">&#9646;&#9646;</div>
+            <h2>已暂停</h2>
+            <button id="resumeBtn" class="btn btn-primary">继续游戏</button>
+          </div>
+          <div id="gameOverScreen" class="screen hidden">
+            <div class="gameover-icon">&#128128;</div>
+            <h2>GAME OVER</h2>
+            <p class="final-score">得分: <strong id="finalScore">0</strong></p>
+            <p id="newRecord" class="new-record hidden">&#127942; 新纪录！</p>
+            <button id="retryBtn" class="btn btn-primary">再来一局</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mobile-controls">
-      <button class="ctrl-btn" data-dir="up">&#9650;</button>
-      <div class="ctrl-row">
-        <button class="ctrl-btn" data-dir="left">&#9664;</button>
-        <button class="ctrl-btn" data-dir="down">&#9660;</button>
-        <button class="ctrl-btn" data-dir="right">&#9654;</button>
+
+    <div class="footer">
+      <div class="controls">
+        <div class="key-group">
+          <kbd>&#9650;</kbd><kbd>&#9660;</kbd><kbd>&#9664;</kbd><kbd>&#9654;</kbd>
+        </div>
+        <span class="sep">或</span>
+        <div class="key-group">
+          <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+        </div>
+        <span class="sep">|</span>
+        <div class="key-group">
+          <kbd>SPACE</kbd>
+        </div>
+        <span class="label-text">暂停</span>
+      </div>
+      <div class="mobile-controls">
+        <div class="dpad">
+          <button class="dpad-btn dpad-up" data-dir="up">&#9650;</button>
+          <button class="dpad-btn dpad-left" data-dir="left">&#9664;</button>
+          <div class="dpad-center"></div>
+          <button class="dpad-btn dpad-right" data-dir="right">&#9654;</button>
+          <button class="dpad-btn dpad-down" data-dir="down">&#9660;</button>
+        </div>
       </div>
     </div>
   </div>
